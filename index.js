@@ -11,6 +11,7 @@ Cmds.cacheReady = ()=>{
 }
 
 Cmds.cmdCache = require('./cmd_cache')
+Cmds.guildCache = require('./guild_cache')
 Cmds.guildIdCache = require('./guild_id_cache')
 Cmds.playerCache = require('./player_cache')
 Cmds.playerIdCache = require('./player_id_cache')

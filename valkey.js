@@ -12,7 +12,7 @@ const init = async()=>{
     client = await GlideClusterClient.createClient({
       addresses: NODE_ADDRESSES,
       useTLS: false,
-      requestTimeout: 1000,
+      requestTimeout: 5000,
       clientName: 'valkey_test'
     })
     testClient()
