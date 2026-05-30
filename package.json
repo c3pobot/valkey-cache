@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/c-3po-bot/valkey-cache.git"
+    "url": "git+https://github.com/c3pobot/valkey-cache.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/c-3po-bot/valkey-cache/issues"
+    "url": "https://github.com/c3pobot/valkey-cache/issues"
   },
-  "homepage": "https://github.com/c-3po-bot/valkey-cache#readme",
+  "homepage": "https://github.com/c3pobot/valkey-cache#readme",
   "dependencies": {
     "@valkey/valkey-glide": "^2.3.1"
   }
