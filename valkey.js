@@ -1,23 +1,19 @@
 const log = require('./logger')
 const { GlideClusterClient } = require('@valkey/valkey-glide')
 
-const CLIENT_PORT = +(process.env.CLIENT_PORT || 6379), CLIENT_POD_NAME = process.env.CLIENT_POD_NAME || 'valkey', CLIENT_NAME_SPACE = process.env.CLIENT_NAME_SPACE || 'datastore', CLIENT_NUM_NODES = +(process.env.CLIENT_NUM_NODES || 5)
-
-let NODE_ADDRESSES = [], client, client_ready
-
+let client_ready, client
 async function init(){
   try{
-    for(let i = 0; i < CLIENT_NUM_NODES; i++) NODE_ADDRESSES.push({ host: `${CLIENT_POD_NAME}-${i}.${CLIENT_POD_NAME}.${CLIENT_NAME_SPACE}.svc.cluster.local`, port: CLIENT_PORT })
     client = await GlideClusterClient.createClient({
-      addresses: NODE_ADDRESSES,
+      addresses: [{ host: 'valkey-cache.datastore.svc.cluster.local', port: 6379 }],
       useTLS: false,
       requestTimeout: 5000,
-      clientName: 'valkey_test'
+      clientName: 'valkey_cache'
     })
     testClient()
   }catch(e){
-    setTimeout(init, 5000)
     log.error(e)
+    setTimeout(init, 5000)
   }
 }
 async function testClient(){
