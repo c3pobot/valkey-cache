@@ -1,10 +1,7 @@
+'use strict'
 const log = require('./logger')
 const valkey = require('./valkey')
 
-process.on('unhandledRejection', (error) => {
-  console.error(`[valkey-cache] [unhandledRejection] ${error}`)
-  if(error?.stack) console.error(error)
-});
 module.exports.status = ()=>{
   return valkey.status()
 }
